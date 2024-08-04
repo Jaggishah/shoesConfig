@@ -1,20 +1,32 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useGLTF } from '@react-three/drei'
 import { whole } from "../valtio"
 
+import { Color } from 'three';
+import { useFrame } from '@react-three/fiber';
+
+
 export default function Model(props) {
-  const { nodes, materials } = useGLTF('/customShoes.glb')
+  const { nodes, materials } = useGLTF('/customShoes.glb');
+  const materialRef = useRef();
 
+  useFrame(() => {
+    if(materialRef.current){
+      materialRef.current.material.color = new Color(whole.currentColor)
+    }
+  })
 
-
+  // useEffect(() => {
+  //   whole.currentColor = '#ffffff'
+  // },[whole.current])
   return (
     <group {...props} dispose={null}
     onPointerDown={(e) => {
-        e.stopPropagation()
-        console.log("jaggi",e.object.material.name)
+        e.stopPropagation();
         whole.current = e.object.material.name;
-    }
-   }>
+        materialRef.current = e.object;
+    }}
+>
       <mesh
         castShadow
         receiveShadow

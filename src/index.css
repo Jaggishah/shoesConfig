@@ -36,3 +36,34 @@
   cursor: pointer;
 
 }
+
+.materialChanger{
+  position: absolute;
+  z-index: 1;
+  right: 2vw;
+  top : 4vh;
+  background-color: rgb(22 16 16 / 59%);
+  color: white;
+  padding: 1% 2%;
+  border-radius: 15px;
+  box-shadow: 1px 5px 5px #0e0b0b45;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.matrialChangeLabel{
+  font-size: 20px;
+}
+
+.sketcher{
+  margin-top: 10px;
+}
+.w-color-sketch {
+  --sketch-background: rgb(22 16 16 / 59%) !important;
+}
+
+h1{
+  font-size: 3vh;
+}
